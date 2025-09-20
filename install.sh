@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# || Aztec Sequencer Multi-Tool Installer & Management Script               ||
+# || Aztec Sequencer Multi-Tool Installer & Management Script (v2 - Patched)  ||
 # ==============================================================================
 
 # --- Helper Functions for Colors ---
@@ -28,7 +28,7 @@ install_node() {
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
         sudo apt-get update && sudo apt-get install -y docker-ce
-        sudo systemctl enable --now docker && sudo usmod -aG docker $USER
+        sudo systemctl enable --now docker && sudo usermod -aG docker $USER
         print_success "Docker installed."
     else
         print_info "Docker is already installed."
@@ -36,7 +36,7 @@ install_node() {
     
     if ! command -v docker-compose &> /dev/null; then
         print_info "Installing Docker Compose..."
-        LATEST_COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)
+        LATEST_COMPOSE_VERSION=`curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name`
         sudo curl -L "https://github.com/docker/compose/releases/download/${LATEST_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         print_success "Docker Compose installed."
@@ -90,7 +90,7 @@ run_node() {
 
     print_info "Starting Aztec Sequencer..."
     source $CONFIG_FILE
-    PUBLIC_IP=$(curl -s ifconfig.me)
+    PUBLIC_IP=`curl -s ifconfig.me`
     
     screen -dmS aztec aztec start --node --archiver --sequencer \
       --network testnet \
