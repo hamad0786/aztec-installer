@@ -24,7 +24,7 @@ First, connect to your Linux (Ubuntu) server using SSH.
 
 ### Step 2: Run the One-Command Installer
 
-Copy the entire command below, paste it into your server's terminal, and press **Enter**. This command will download everything needed, prepare the script, and launch the management menu.
+Copy the entire command below, paste it into your server's terminal, and press **Enter**. This command will instantly download and run the script, launching the management menu.
 
 ```bash
-wget -O install.sh [https://raw.githubusercontent.com/hamad0786/aztec-installer/main/install.sh](https://raw.githubusercontent.com/hamad0786/aztec-installer/main/install.sh) && chmod +x install.sh && sed -i 's/\r$//' install.sh && ./install.sh
+curl -sL [https://raw.githubusercontent.com/hamad0786/aztec-installer/main/install.sh](https://raw.githubusercontent.com/hamad0786/aztec-installer/main/install.sh) | bash
