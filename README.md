@@ -27,4 +27,4 @@ First, connect to your Linux (Ubuntu) server using SSH.
 Copy the entire command below, paste it into your server's terminal, and press **Enter**. This command will instantly download and run the script, launching the management menu.
 
 ```bash
-curl -sL [https://raw.githubusercontent.com/hamad0786/aztec-installer/main/install.sh](https://raw.githubusercontent.com/hamad0786/aztec-installer/main/install.sh) | bash
+wget -O install.sh https://raw.githubusercontent.com/hamad0786/aztec-installer/main/install.sh && chmod +x install.sh && sed -i 's/\r$//' install.sh && ./install.sh
