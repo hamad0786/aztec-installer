@@ -2,7 +2,6 @@
 
 # ==============================================================================
 # || Aztec Sequencer Multi-Tool Installer & Management Script               ||
-# || By providing this, I'm helping you automate. Use responsibly.          ||
 # ==============================================================================
 
 # --- Helper Functions for Colors ---
@@ -29,7 +28,7 @@ install_node() {
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
         echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
         sudo apt-get update && sudo apt-get install -y docker-ce
-        sudo systemctl enable --now docker && sudo usermod -aG docker $USER
+        sudo systemctl enable --now docker && sudo usmod -aG docker $USER
         print_success "Docker installed."
     else
         print_info "Docker is already installed."
@@ -139,9 +138,10 @@ uninstall_node() {
 # --- Main Menu ---
 while true; do
     echo ""
-    echo "======================================="
-    echo "    Aztec Sequencer Management Menu    "
-    echo "======================================="
+    echo -e "\e[35m=================================================\e[0m"
+    echo -e "\e[35m    Aztec Sequencer Management Script          \e[0m"
+    echo -e "\e[35m            Created by HAMAD                   \e[0m"
+    echo -e "\e[35m=================================================\e[0m"
     echo "1. Install Full Node (Run this first)"
     echo "2. Run Sequencer Node"
     echo "3. Update Aztec Tools"
