@@ -49,7 +49,7 @@ install_node() {
     bash -i <(curl -s https://install.aztec.network)
     echo 'export PATH="$HOME/.aztec/bin:$PATH"' >> ~/.bashrc
     source ~/.bashrc
-    aztec-up 2.0.2
+    aztec-up 2.0.3
 
     # 4. Configure Firewall
     print_info "Configuring firewall..."
@@ -158,4 +158,5 @@ while true; do
         5) exit 0 ;;
         *) print_warning "Invalid option. Please try again." ;;
     esac
+
 done
